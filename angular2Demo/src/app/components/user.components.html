@@ -1,0 +1,34 @@
+<h1>{{name}}</h1>
+  <p>Email: {{email}}</p>
+  <p>Adresa: {{address.street}}</p>
+  <button (click) = "toggleHobbies()">{{showHobbies? "sakrij interesovanja":"prikazi interesovanja"}}</button>
+  <div *ngIf = "showHobbies">
+    <h3>Interesovanja</h3>
+    <ul>
+        <li *ngFor="let i of hobbies; let j = index">
+        {{i}} <button (click) = "deleteHobby(j)">X</button>
+        </li>
+    </ul>
+    <form (submit)="addHobby(hobby.value)">
+        <label>Dodaj interesovanje: </label><br/>
+        <input type = "text" #hobby/><br/>
+    </form>
+
+  </div>
+  <hr/>
+  <h3>Promjena</h3>
+  <form>
+        <label>Name: </label><br/>
+        <input type = "text" name = "name" [(ngModel)] = "name"/><br/>
+        <label>Email: </label><br/>
+        <input type = "text" name = "email" [(ngModel)] = "email"/><br/>
+        <label>adresa: </label><br/>
+        <input type = "text" name = "adresa" [(ngModel)] = "address.street"/><br/>
+  </form>
+  <hr/>
+  <h3>Posts</h3>
+  <div *ngFor = "let post of posts" >
+      <h3>{{post.title}}</h3>
+      <p>{{post.body}}</p>
+
+  </div>
